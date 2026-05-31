@@ -6,7 +6,7 @@ import time
 import hashlib
 import sys
 
-# --- ⚙️ НАСТРОЙКИ ---
+# --- НАСТРОЙКИ ---
 API_TOKEN = '7561221615:AAHxyHTqOH1Hjqi9xBKXjW0tq85e-VBxZng'
 ADMIN_ID = 627993386
 BOT_USERNAME = "uucineculturebot"
@@ -25,7 +25,7 @@ bot = telebot.TeleBot(API_TOKEN)
 admin_state = {}
 temp_session_data = {}
 
-# --- 🛠 РАБОТА С ФАЙЛАМИ ---
+# --- РАБОТА С ФАЙЛАМИ ---
 
 def log(text):
     print(f"[{time.strftime('%H:%M:%S')}] {text}")
@@ -62,7 +62,7 @@ def is_admin(user_id):
 def generate_safe_id(text):
     return hashlib.md5(text.encode('utf-8')).hexdigest()[:10]
 
-# --- 📱 МЕНЮ ---
+# --- МЕНЮ ---
 
 def get_main_menu(user_id):
     markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
@@ -77,7 +77,7 @@ def get_main_menu(user_id):
         markup.add("🛎️ наш адрес", "🎞 о кинокультуре")
     return markup
 
-# --- 🚀 СТАРТ ---
+# --- СТАРТ ---
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
@@ -133,7 +133,7 @@ def handle_start(message):
         log(f"Error in start: {e}")
         bot.reply_to(message, "Ошибка старта. Нажмите /start еще раз.")
 
-# --- 👤 ФУНКЦИИ ПОЛЬЗОВАТЕЛЯ ---
+# --- ФУНКЦИИ ПОЛЬЗОВАТЕЛЯ ---
 
 @bot.message_handler(func=lambda m: m.text == "📰 афиша месяца")
 def show_afisha(message):
@@ -188,7 +188,7 @@ def show_info(message):
 Заглавная тема проекта — это диалог: немного контекста перед показом, обсуждение после, живые мысли и разные взгляды. Теперь у каждого есть возможность найти что-то свое в показанных картинах, но самое главное, это разделить с нами ваши мысли и идеи. Открытая к коллаборациям и предложениям, _кинокультура_ будет становиться круче и круче, собирая исключительную аудиторию: вдохновленную, неравнодушную, открытую. Присоединяйся к нам!"""
     bot.reply_to(message, text, parse_mode="Markdown")
 
-# --- 👑 ФУНКЦИИ АДМИНИСТРАТОРА ---
+# --- ФУНКЦИИ АДМИНИСТРАТОРА ---
 
 @bot.message_handler(commands=['cancel'])
 def cancel_action(message):
@@ -411,7 +411,7 @@ def handle_callbacks(call):
         else:
             bot.answer_callback_query(call.id, "Уже удалено.")
 
-# --- 🔥 БЕССМЕРТНЫЙ РЕЖИМ 🔥 ---
+# --- БЕССМЕРТНЫЙ РЕЖИМ  ---
 if __name__ == '__main__':
     print("Бот запущен...")
     while True:
